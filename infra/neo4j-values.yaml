@@ -1,0 +1,10 @@
+neo4j:
+  name: cerberus-graph
+  password: "cerberus-neo4j"
+
+volumes:
+  data:
+    mode: defaultStorageClass
+
+env:
+  NEO4J_PLUGINS: '["apoc"]'
