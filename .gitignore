@@ -1,0 +1,8 @@
+*.tar.gz
+linux-amd64/
+__pycache__/
+*.pyc
+.env
+node_modules/
+dist/
+*.log
