@@ -1,0 +1,14 @@
+alertmanager:
+  enabled: false
+
+prometheus-pushgateway:
+  enabled: false
+
+configmapReload:
+  prometheus:
+    enabled: false
+
+server:
+  image:
+    repository: prom/prometheus
+    registry: ""
