@@ -1,0 +1,32 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: manager-role
+rules:
+- apiGroups:
+  - ml.cerberus.io
+  resources:
+  - mlmodels
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ml.cerberus.io
+  resources:
+  - mlmodels/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - ml.cerberus.io
+  resources:
+  - mlmodels/status
+  verbs:
+  - get
+  - patch
+  - update

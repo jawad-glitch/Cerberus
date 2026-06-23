@@ -1,0 +1,12 @@
+apiVersion: ml.cerberus.io/v1alpha1
+kind: MLModel
+metadata:
+  labels:
+    app.kubernetes.io/name: mlmodel
+    app.kubernetes.io/instance: mlmodel-sample
+    app.kubernetes.io/part-of: operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: operator
+  name: mlmodel-sample
+spec:
+  # TODO(user): Add fields here
