@@ -55,7 +55,20 @@ func (r *MLModelReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 		return ctrl.Result{}, err
 	}
 
-	logger.Info("Deployment already exists", "name", mlmodel.Name)
+	currentImage := found.Spec.Template.Spec.Containers[0].Image
+	desiredImage := mlmodel.Spec.Image
+
+	if currentImage != desiredImage {
+		logger.Info("Image changed, updating deployment",
+			"current", currentImage,
+			"desired", desiredImage)
+		found.Spec.Template.Spec.Containers[0].Image = desiredImage
+		if err := r.Update(ctx, found); err != nil {
+			logger.Error(err, "Failed to update Deployment")
+			return ctrl.Result{}, err
+		}
+	}
+
 	return ctrl.Result{}, nil
 }
 
