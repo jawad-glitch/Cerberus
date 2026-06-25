@@ -3,6 +3,7 @@ set -e
 
 echo "Starting Cerberus Loacl Environment..."
 
+kind delete cluster --name cerberus 2>/dev/null || true
 kind create cluster --name cerberus
 kubectl create namespace cerberus-system
 
@@ -20,3 +21,5 @@ helm install neo4j neo4j/neo4j \
 
 echo "Cerberus environment ready"
 echo "Run: kubectl get pods -n cerberus-system"
+kubectl apply -f operator/config/crd/bases/ml.cerberus.io_mlmodels.yaml
+echo "✅ CRDs installed"
