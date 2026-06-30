@@ -12,3 +12,10 @@ server:
   image:
     repository: prom/prometheus
     registry: ""
+
+extraScrapeConfigs: |
+  - job_name: cerberus-model-servers
+    static_configs:
+      - targets: ['fraud-detector.cerberus-system.svc.cluster.local:8080']
+    metrics_path: /metrics
+    scrape_interval: 15s
